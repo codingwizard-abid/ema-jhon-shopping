@@ -5,10 +5,15 @@
 .shop-container{
    display: grid;
    grid-template-columns: 4fr 1fr;
-   padding: 100px 0;
 }
 .shop-items{
    display:grid;
    grid-template-columns: repeat(3, 1fr);
    row-gap: 25px;
+   padding: 100px 0;
+}
+.cart-info{
+   background-color: rgba(255, 153, 0, 0.3);
+   padding: 20px 12px;
+   border-radius: 8px;
 }
