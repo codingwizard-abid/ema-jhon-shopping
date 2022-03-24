@@ -22,18 +22,26 @@ const Shop = () => {
             const quantity = storedCart[id];
             addedProducts.quantity = quantity;
             savedCart.push(addedProducts);
-            console.log(addedProducts);
          }
       }
       setCart(savedCart);
-      console.log(cart);
    },[products])
    
 
-   const handleCartClick = (product)=>{
-      const newCart = [...cart, product];
+   const handleCartClick = (selectedProduct)=>{
+      const exists = cart.find(product => product.id === selectedProduct.id);
+      let newCart = [];
+      if(!exists){
+         selectedProduct.quantity = 1;
+         newCart = [...cart, selectedProduct];
+      }else{
+         const rest = cart.filter(product => product.id !== selectedProduct.id);
+         exists.quantity += 1;
+         newCart = [...rest, exists];
+      }
+      
       setCart(newCart);
-      addToDb(product.id)
+      addToDb(selectedProduct.id)
    };
 
    return (
